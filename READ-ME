@@ -1,0 +1,22 @@
+Apache Kafka Implementation using Spring Boot:
+
+1. Driver (cab-book-driver) Application
+	-> Creates a Kafka Topic (cab-location)
+	-> puts location in that Topic
+
+2. User (cab-book-user) Application
+	-> Creates a group (user-group) to cosume from the topic(cab-location)
+
+How to test:
+1. Using terminal/cmd launch apache kafka server using:
+	-> bin/kafka-server-start.sh config/kraft/reconfig-server.properties 
+
+2. Create a topic (optional):
+	-> bin/kafka-console-consumer.sh --topic cab-location --from-beginning --bootstrap-server localhost:9092
+
+	-> bin/kafka-topics.sh --describe --topic cab-location --bootstrap-server localhost:9092
+
+This will allow you to consume meesages on terminal/CMD
+
+3. Open Postman:
+Hit thiis url: http://localhost:8083/location using PUT method
